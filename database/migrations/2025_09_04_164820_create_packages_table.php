@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique(); // e.g., "Free", "Premium"
-            $table->integer('daily_sessions')->nullable(); // NULL means unlimited
-            $table->integer('responses_per_session')->nullable(); // NULL means unlimited
-            $table->boolean('is_default')->default(false); // Marks the free package
+            $table->string('name')->unique();
+            $table->integer('sessions_per_day');
+            $table->integer('responses_per_session')->nullable();
             $table->timestamps();
-
-            $table->index(['name']);
         });
     }
 

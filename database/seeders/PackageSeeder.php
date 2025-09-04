@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,28 +15,19 @@ class PackageSeeder extends Seeder
     {
         DB::table('packages')->insert([
             [
-                'name' => 'Free',
-                'daily_sessions' => 2,
-                'responses_per_session' => 10, // 2 sessions * 10 responses = 20 total
-                'is_default' => true,
-                'created_at' => now(),
-                'updated_at' => now(),
+                'name' => 'free',
+                'sessions_per_day' => 2,
+                'responses_per_session' => 20,
             ],
             [
-                'name' => 'Premium',
-                'daily_sessions' => 10,
+                'name' => 'premium',
+                'sessions_per_day' => 10,
                 'responses_per_session' => 20,
-                'is_default' => false,
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
                 'name' => 'guest',
-                'daily_sessions' => 2,
+                'sessions_per_day' => 2,
                 'responses_per_session' => 3,
-                'is_default' => false,
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
         ]);
     }

@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('token_count');
             $table->timestamps();
 
-            $table->foreign('chat_session_id')->references('id')->on('chat_sessions')->onDelete('cascade');
             $table->index(['chat_session_id', 'sender']);
         });
     }

@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('package_id')->default(1)->constrained()->after('password');
+        Schema::create('app_settings', function (Blueprint $table) {
+            $table->id();
+            $table->text('key');
+            $table->text('value');
+            $table->text('description');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('package_id');
-        });
+        Schema::dropIfExists('app_settings');
     }
 };
